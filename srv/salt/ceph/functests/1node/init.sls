@@ -10,3 +10,4 @@ include:
   - .openstack
   - .tuned
   - .terminate.all
+  - .orchestrator

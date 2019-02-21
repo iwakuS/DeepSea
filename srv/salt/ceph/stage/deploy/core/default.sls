@@ -108,6 +108,17 @@ mgrs:
     - sls: ceph.mgr
     - failhard: True
 
+mgr orchestrator module:
+  salt.state:
+    - tgt: {{ master }}
+    - tgt_type: compound
+    - sls: ceph.mgr.orchestrator
+    - pillar:
+        'salt_api_url': http://{{ master }}:8000/
+        'salt_api_username': admin
+        'salt_api_password': {{ salt.saltutil.runner('sharedsecret.show') }}
+    - failhard: True
+
 osd auth:
   salt.state:
     - tgt: {{ master }}
