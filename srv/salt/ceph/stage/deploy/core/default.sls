@@ -108,6 +108,13 @@ mgrs:
     - sls: ceph.mgr
     - failhard: True
 
+dashboard:
+  salt.state:
+    - tgt: {{ master }}
+    - tgt_type: compound
+    - sls: ceph.dashboard
+    - failhard: True
+
 osd auth:
   salt.state:
     - tgt: {{ master }}
